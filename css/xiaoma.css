@@ -1,0 +1,564 @@
+body {
+    font-family: "microsoft yahei";
+    background-color: #F1F1F1;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    display: block;
+}
+
+.title,
+.ranking,
+.next,
+.prev {
+    /*a标签超出的字体用省略号代替*/
+    overflow: hidden;
+    display: -webkit-box;
+    display: -moz-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -moz-box-orient: vertical;
+    -webkit-box-orient: vertical;
+}
+
+.title:hover,
+.link:hover,
+.ranking:hover,
+.item:hover {
+    /*a标签悬浮颜色变粉*/
+    color: #CC6688;
+}
+
+#header,
+.head,
+.btn {
+    background-color: #CC6688;
+}
+
+#blog,
+.menu,
+.head,
+.btn {
+    color: white;
+}
+
+.article,
+.type,
+#articlectn,
+#showcomment,
+#addcomm,
+#comment {
+    background-color: white;
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 15px;
+}
+
+/*顶部导航条*/
+
+#header {
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    /*background-color: #444444;*/
+    position: fixed;
+    z-index: 100;
+}
+
+/*响应式布局，页面缩小时，顶部导航菜单不会重叠或换行*/
+
+@media screen and (max-width: 1150px) {
+    body, #header {
+        width: 1150px;
+    }
+}
+
+/*logo*/
+
+/*自定义字体*/
+
+@font-face {
+    font-family: "xiaoma";
+    src: url("xiaoma.ttf");
+}
+
+#blog {
+    float: left;
+    margin-left: 100px;
+    font-size: 32px;
+    font-family: "xiaoma";
+    /*text-shadow: 3px 3px 5px white;*/
+    /*padding-left: 55px;*/
+    /*background: url(../img/horse1.png) no-repeat left center;
+    background-size: 60px 60px;*/
+}
+
+/*导航菜单*/
+
+#menus {
+    float: right;
+    margin-right: 80px;
+}
+
+#menus > li {
+    float: left;
+    position: relative;
+}
+
+.menu {
+    padding: 0 15px;
+}
+
+.menu:hover {
+    color: black;
+}
+
+/*子菜单*/
+
+.cmenus {
+    position: absolute;
+    top: 55px;
+    left: -1px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-top: 0;
+    border-bottom: 0;
+    display: none;
+    /*opacity: 0;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s;*/
+}
+
+.cmenu {
+    padding-left: 15px;
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    border-bottom: 1px dashed lightgray;
+}
+
+.cmenus>li:last-child a {
+    border-bottom: 1px solid lightgray;
+}
+
+.haschild:hover .menu {
+    background-color: white;
+    color: black;
+}
+
+.haschild:hover .cmenus {
+    display: block;
+    /*opacity: 1.0;*/
+}
+
+.cmenu:hover{
+    background-color: ghostwhite;
+}
+
+/*中间内容部分：两列布局，左列定宽，右列自适应*/
+
+#content {
+    width: 1150px;
+    margin: 0px auto;
+    overflow: hidden;
+    padding-top: 70px;
+}
+
+#showarticles {
+    float: left;
+    width: 850px;
+    margin-right: 10px;
+    position: relative;
+}
+
+#types {
+    overflow: hidden;
+}
+
+/*左列文章列表展示*/
+
+.article {
+    padding: 10px;
+    height: 80px;
+    border: 1px solid lightgray;
+}
+
+.showimg {
+    float: left;
+    margin: 0 20px 0 0;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.imgsize {
+    width: 80px;
+    height: 80px;
+}
+
+.showtitle {
+    overflow: hidden;
+}
+
+.title {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.icon {
+    display: inline-block;
+    padding-left: 18px;
+    margin-right: 15px;
+}
+
+.date {
+    background: url(../img/date.png) no-repeat left center;
+}
+
+.read {
+    background: url(../img/read.png) no-repeat left center;
+}
+
+.comment {
+    background: url(../img/comment.png) no-repeat left center;
+}
+
+#pages {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#pages li {
+    display: inline-block;
+}
+
+.page {
+    padding: 0px 10px;
+    height: 30px;
+    line-height: 30px;
+    background-color: white;
+}
+
+/*右列搜索、文章分类等展示*/
+
+.type {
+    border: 1px solid lightgray;
+    overflow: hidden;
+}
+
+.head {
+    height: 25px;
+    line-height: 25px;
+    padding: 5px 0 5px 15px;
+}
+
+#search {
+    text-align: center;
+}
+
+#query {
+    width: 170px;
+    height: 25px;
+    font-size: 12px;
+}
+
+.btn {
+    border: 0;
+    width: 60px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.setposition {
+    margin: 20px auto;
+    padding-left: 10px;
+}
+
+.details {
+    list-style-type: square;
+    margin-left: 40px;
+}
+
+.circlestyle {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.item,
+.ranking {
+    height: 30px;
+    line-height: 30px;
+}
+
+.ranking {
+    padding-right: 40px;
+    position: relative;
+}
+
+.item,
+.details {
+    font-size: 12px;
+}
+
+.link {
+    padding: 3px 0;
+}
+
+.num,
+.count {
+    padding-left: 5px;
+    color: gray;
+}
+
+.count {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+
+/*aricle.html页面：文章内容展示样式*/
+
+#articlectn,
+#showcomment,
+#comment {
+    padding: 20px;
+}
+
+.txtcenter {
+    text-align: center;
+}
+
+/*文章标题*/
+
+#aname {
+    font-size: 20px;
+    padding-bottom: 8px;
+}
+
+.catalog {
+    background: url(../img/catalog.png) no-repeat left center;
+}
+
+/*文章内容*/
+
+#ctns {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px dashed lightgray;
+    border-bottom: 1px dashed lightgray;
+}
+
+#ctns ul {
+    margin-left: 40px;
+}
+
+/*切换上一篇下一篇*/
+
+#carticle {
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+/*评论部分——自己写*/
+
+/*发表评论——form*/
+
+#addcomm {
+    overflow: hidden;
+}
+
+#addcomment {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.line {
+    margin-bottom: 10px;
+}
+
+.input {
+    width: 400px;
+}
+
+#uname,
+#uemail {
+    height: 25px;
+}
+
+#ucomment {
+    height: 100px;
+}
+
+/*评论展示*/
+
+.clist {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid lightgray;
+}
+
+.resetsize {
+    width: 60px;
+    height: 60px;
+}
+
+.cname {
+    font-weight: bold;
+}
+
+.pctn {
+    font-size: 13px;
+    margin: 8px 0 5px 0;
+}
+
+.fontsize {
+    font-size: 13px;
+    color: gray;
+}
+
+.cdate {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.reply {
+    background: url(../img/reply.png) no-repeat left center;
+}
+
+#cpages {
+    margin-top: 10px;
+}
+
+#cpages > li {
+    display: inline-block;
+}
+
+.pagebg {
+    background-color: #CC6688;
+    color: white;
+    font-size: 12px;
+}
+
+/*回复评论显示:每次向右偏移30px*/
+
+.replycomm {
+    margin-left: 30px;
+}
+
+/*评论部分自写完成*/
+
+/*显示备案信息*/
+
+#footer {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+
+/*回到顶部图标*/
+
+#totop {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+    display: none;
+    cursor: pointer;
+}
+
+#totop:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #CC6688 transparent transparent #CC6688;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*修改畅言评论插件样式*/
+
+/* "X人参与，X评论" - 数字色 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-title-w .join-wrap-w span.wrap-join-w em.join-strong-bg {
+    color: #CC6688;
+}
+
+/* 菜单 - 默认状态 - 用户名字色 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-title-w .user-wrap-w .wrap-name-b {
+    color: #CC6688;
+}
+
+/*菜单——下拉时——退出、我的畅言字体颜色*/
+
+#SOHU_MAIN i {
+    color: #CC6688;
+}
+
+/* 还没有评论，快来抢沙发吧 - 背景色，字色 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-list-w .list-comment-empty-w .empty-prompt-w .prompt-null-b {
+    background-color: ghostwhite;
+    color: black;
+}
+
+/* 版权信息 - 链接色 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-service-w .service-wrap-b a {
+    color: gainsboro;
+}
+
+/* 热门评论/最新评论 - 下边线 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-list-w .block-title-gw ul {
+    border-bottom: 2px solid #CC6688;
+    background-color: transparent;
+}
+
+#SOHUCS #SOHU_MAIN .global-clear-spacing a {
+    color: #CC6688;
+}
+
+/* 主发布 - 按钮默认状态 图片尺寸90x42 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-cbox-w .issue-btn-w a .btn-bf {
+    background-image: url(../img/public.png);
+    background-position: 0 0;
+}
+
+/* 主发布 - 按钮hover状态 图片尺寸90x42 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-cbox-w .issue-btn-w a:hover .btn-bf {
+    background-image: url(../img/public.png);
+    background-position: 0 0;
+}
+
+/* 楼内回复发布 - 按钮默认状态 图片尺寸90x32 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-list-w .issue-btn-w a .btn-bf {
+    background-image: url(../img/public1.png);
+    background-position: 0 0;
+}
+
+/* 楼内回复发布 - 按钮hover状态 图片尺寸90x32 */
+
+#SOHUCS #SOHU_MAIN #SOHU-comment-main .section-list-w .issue-btn-w a:hover .btn-bf {
+    background-image: url(../img/public1.png);
+    background-position: 0 0;
+}
