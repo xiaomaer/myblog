@@ -8,7 +8,7 @@ a {
     text-decoration: none;
     font-size: 15px;
     color: black;
-    display: block;
+    display:inline-block;
 }
 
 .title,
