@@ -33,7 +33,7 @@ function toTop() {
 function scrollFixed(){
    var scrollLeft=window.pageXOffset||doc.body.scrollLeft||doc.documentElement.scrollLeft;
     if(scrollLeft>0){
-        doc.getElementById("header").style.left=-scrollLeft+"px";
+        doc.getElementById("header").style.left=-scrollLeft+"px";//原始left值为0
     }
 }
 //窗口滚动事件，当滚动时，显示“回到顶部”按钮
